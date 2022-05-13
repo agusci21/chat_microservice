@@ -1,4 +1,4 @@
-const saveMessage = require('../database/config')
+const { saveMessage } = require('../database/config')
 const { io } = require('../index')
 
 // Mensajes de Sockets
@@ -14,5 +14,4 @@ io.on('connection', (client) => {
     saveMessage(payload)
     io.emit('mensaje', payload)
   })
-
 })
