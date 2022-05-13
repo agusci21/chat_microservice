@@ -1,4 +1,5 @@
 const fs = require('fs')
+const { stringify } = require('querystring')
 
 const saveMessage = (message) => {
   const rawData = fs.readFileSync('./database/data.json')
@@ -17,15 +18,15 @@ const getMessages = (value) => {
   const file = JSON.parse(rawData)
   const { messages } = file
   let retornableList = []
-  /*for (i = 0; i < messages.length; i++) {
+  for (i = 0; i < messages.length; i++) {
     if (
       (messages[i]['from'] == from && messages[i]['to'] == to) ||
       (messages[i]['from'] == to && messages[i]['to'] == from)
     ) {
       retornableList.push(messages[i])
     }
-  }*/
-  return messages
+  }
+  return JSON.stringify(retornableList)
 }
 
 module.exports = { saveMessage, getMessages }
