@@ -15,6 +15,7 @@ const getMessages = (value) => {
   const from = `${value['from']}`
   const to = `${value['to']}`
   const rawData = fs.readFileSync('./database/data.json')
+  console.log(rawData)
   const file = JSON.parse(rawData)
   const { messages } = file
   let retornableList = []
