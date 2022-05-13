@@ -26,6 +26,7 @@ const getMessages = (value) => {
       retornableList.push(messages[i])
     }
   }
+  console.log(JSON.stringify(retornableList))
   return JSON.stringify(retornableList)
 }
 
