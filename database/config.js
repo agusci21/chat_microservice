@@ -17,15 +17,15 @@ const getMessages = (value) => {
   const file = JSON.parse(rawData)
   const { messages } = file
   let retornableList = []
-  for (i = 0; i < messages.length; i++) {
+  /*for (i = 0; i < messages.length; i++) {
     if (
       (messages[i]['from'] == from && messages[i]['to'] == to) ||
       (messages[i]['from'] == to && messages[i]['to'] == from)
     ) {
       retornableList.push(messages[i])
     }
-  }
-  return retornableList
+  }*/
+  return messages
 }
 
 module.exports = { saveMessage, getMessages }
