@@ -11,8 +11,8 @@ const saveMessage = (message) => {
 }
 
 const getMessages = (value) => {
-  const from = value['from']
-  const to = value['to']
+  const from = `${value['from']}`
+  const to = `${value['to']}`
   const rawData = fs.readFileSync('./database/data.json')
   const file = JSON.parse(rawData)
   const { messages } = file
