@@ -10,17 +10,19 @@ const saveMessage = (message) => {
   fs.writeFileSync('./database/data.json', JSON.stringify(returnableData))
 }
 
-const getMessages = (id) => {
+const getMessages = (value) => {
+  const id = value["id"]
+  console.log(id)
   const rawData = fs.readFileSync('./database/data.json')
   const file = JSON.parse(rawData)
-  let { messages } = file
+  const { messages } = file
   let retornableList = []
   for (i = 0; i < messages.length; i++) {
     if (messages[i]['from'] == id || messages[i]['to'] == id) {
-      console.log(messages[i])
+      retornableList.push(messages[i])
     }
   }
-  return messages
+  return retornableList
 }
 
 module.exports = { saveMessage, getMessages }

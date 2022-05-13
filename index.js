@@ -7,14 +7,16 @@ require('dotenv').config()
 // App de Express
 const app = express()
 
-const mensages = getMessages('0')
-
-console.log(mensages)
 
 // Node Server
 const server = require('http').createServer(app)
 module.exports.io = require('socket.io')(server)
 require('./sockets/socket')
+
+app.get('/api/messages/:id', (req, res) => {
+  const listOfMessages = getMessages(req.params)
+  res.json({msg: listOfMessages})
+})
 
 // Path público
 const publicPath = path.resolve(__dirname, 'public')
