@@ -11,14 +11,17 @@ const saveMessage = (message) => {
 }
 
 const getMessages = (value) => {
-  const id = value["id"]
-  console.log(id)
+  const from = value['from']
+  const to = value['to']
   const rawData = fs.readFileSync('./database/data.json')
   const file = JSON.parse(rawData)
   const { messages } = file
   let retornableList = []
   for (i = 0; i < messages.length; i++) {
-    if (messages[i]['from'] == id || messages[i]['to'] == id) {
+    if (
+      (messages[i]['from'] == from && messages[i]['to'] == to) ||
+      (messages[i]['from'] == to && messages[i]['to'] == from)
+    ) {
       retornableList.push(messages[i])
     }
   }
