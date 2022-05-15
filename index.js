@@ -15,14 +15,11 @@ const server = require('http').createServer(app)
 module.exports.io = require('socket.io')(server)
 require('./sockets/socket')
 
-app.get('/api/messages/:from/:to', (req, res) => {
-  const listOfMessages = getMessages(req.params)
-  res.send(listOfMessages.replace('\\', ''))
-})
-
 // Path público
 const publicPath = path.resolve(__dirname, 'public')
 app.use(express.static(publicPath))
+
+app.use('/api/messages', require('./routes/get_messages'))
 
 server.listen(process.env.PORT, (err) => {
   if (err) throw new Error(err)
