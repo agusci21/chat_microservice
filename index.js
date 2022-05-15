@@ -1,11 +1,14 @@
 const express = require('express')
 const Message = require('./models/messages')
 const path = require('path')
-const {saveMessage, getMessages} = require('./database/config')
+const {dbConnection} = require('./database/config')
 require('dotenv').config()
 
 // App de Express
 const app = express()
+
+//Database
+dbConnection()
 
 // Node Server
 const server = require('http').createServer(app)
